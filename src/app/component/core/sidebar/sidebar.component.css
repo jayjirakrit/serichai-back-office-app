@@ -1,0 +1,19 @@
+.sidebar-container {
+  width: 236px;
+  height: 1024px;
+  background-color: #ffffff;
+  display: block;
+  margin-top: 0.125em;
+  border-radius: 5px;
+}
+
+.nav-item-custom {
+  font-family: "Roboto";
+  margin-left: 30px;
+  margin: 20px;
+  font-size: 15px;
+}
+
+.nav-item-custom img {
+  margin-right: 10px;
+}

@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  background-color: var(
+    --app-background-color
+  ); /* Use the custom CSS variable for the background color */
+}
+
+.main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
+
+.main-container {
+  align-self: stretch;
+  justify-self: stretch;
+  flex: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.main-content {
+  height: calc(100vh - 4em);
+  overflow: auto;
+  position: relative;
+}
