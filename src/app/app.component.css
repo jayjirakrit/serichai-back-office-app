@@ -10,17 +10,20 @@
   align-items: flex-start;
   justify-content: flex-start;
   min-height: 100vh;
+  height: calc(100vh - 3em);
+  /* overflow: hidden; */
 }
 
 .main-container {
   align-self: stretch;
   justify-self: stretch;
   flex: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 }
 .main-content {
   height: calc(100vh - 4em);
   overflow: auto;
   position: relative;
+  /* overflow: hidden; */
 }

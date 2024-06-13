@@ -1,0 +1,9 @@
+.page-no {
+    align-self: center;
+    vertical-align: middle;
+    color: hsla(0, 0%, 0%, 66%);
+}
+.page-item {
+    margin-left: 10px;
+    margin-right: 10px;
+}

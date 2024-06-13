@@ -7,13 +7,23 @@
   border-radius: 5px;
 }
 
+.nav-item {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.nav-item-home {
+  margin-top: 40px;
+}
+
 .nav-item-custom {
-  font-family: "Roboto";
   margin-left: 30px;
   margin: 20px;
   font-size: 15px;
+  font-weight: bold;
+  color: hsla(0, 0%, 0%, 66%);
 }
 
 .nav-item-custom img {
-  margin-right: 10px;
+  margin-right: 8px;
 }

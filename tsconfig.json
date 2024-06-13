@@ -2,6 +2,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "resolveJsonModule": true,
+    "strict": true,
     "outDir": "./dist/out-tsc",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,6 +21,7 @@
     ]
   },
   "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictTemplates": true
   }
 }

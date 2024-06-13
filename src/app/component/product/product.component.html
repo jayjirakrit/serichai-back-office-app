@@ -1,1 +1,122 @@
-<p>product works!</p>
+<div class="product">
+  <div class="search-function">
+    <!-- Serach Bar Section -->
+    <div class="search-function-text fw-bold">Search Function</div>
+    <div class="search-bar container">
+      <form (ngSubmit)="searchProduct()">
+        <div class="row">
+          <div class="search-field col mt-4">
+            <label for="search-product-code" class="form-label fw-bold"
+              >Product Code</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="product-code"
+              name="product-code"
+              [(ngModel)]="productCode"
+              placeholder="Enter details"
+            />
+          </div>
+          <div class="search-field col mt-4">
+            <label for="search-product-name" class="form-label fw-bold"
+              >Product Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="product-name"
+              name="product-name"
+              [(ngModel)]="productName"
+              placeholder="Enter details"
+            />
+          </div>
+          <div class="search-field col mt-4">
+            <label for="category-type" class="form-label fw-bold"
+              >Category Type</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="category-type"
+              name="category-type"
+              [(ngModel)]="categoryType"
+              placeholder="Enter details"
+            />
+          </div>
+          <div class="search-field-button col mt-2">
+            <button
+              type="button"
+              (click)="clearResult()"
+              class="btn btn-secondary"
+            >
+              Clear
+            </button>
+            <button type="submit" class="btn btn-primary bold">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="search-result">
+    <!-- Serach Result Section -->
+    <div class="search-result-text fw-bold">Search Result</div>
+    <div class="search-result-table" *ngIf="products !== undefined">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="align-middle fw-bold" scope="col">Product Code</th>
+            <th class="align-middle fw-bold" scope="col">Product Name</th>
+            <th class="align-middle fw-bold" scope="col">Category Type</th>
+            <th class="align-middle fw-bold" scope="col">Government Name</th>
+            <th class="align-middle fw-bold" scope="col">Action</th>
+            <th class="align-middle fw-bold" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template [ngIf]="products.length > 0">
+            <ng-container *ngFor="let product of products; let i = index">
+              <tr>
+                <td class="align-middle">{{ product.productCode }}</td>
+                <td class="align-middle">{{ product.productName }}</td>
+                <td class="align-middle">{{ product.categoryType }}</td>
+                <td class="align-middle">{{ product.governmentName }}</td>
+                <td class="align-middle">
+                  View<a routerLink="/product-item/{{ product.productId }}"
+                    ><img class="view-icon" src="./assets/icons/eye-fill.svg"
+                  /></a>
+                </td>
+                <td class="align-middle">
+                  <!-- <a (click)="expandProduct(product)">Expand</a> -->
+                </td>
+              </tr>
+              <ng-container *ngIf="selectedProduct === product">
+                <!-- Add Expand Movement -->
+                <tr
+                  [ngbCollapse]="!selectedProduct"
+                  [horizontal]="true"
+                  [animation]="true"
+                >
+                  <td class="align-middle">{{ product.productCode }}</td>
+                  <td class="align-middle">{{ product.productName }}</td>
+                  <td class="align-middle">{{ product.categoryType }}</td>
+                  <td class="align-middle">
+                    {{ product.governmentName }}
+                  </td>
+                  <td class="align-middle">View</td>
+                  <td class="align-middle"></td>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </ng-template>
+        </tbody>
+      </table>
+      <ng-template [ngIf]="products.length == 0">
+        <p class="no-result-text">No Result Found</p>
+      </ng-template>
+      <div class="app-pagination">
+        <app-pagination></app-pagination>
+      </div>
+    </div>
+  </div>
+</div>
