@@ -1,18 +1,23 @@
 <div class="sidebar-container">
   <ul class="nav flex-column">
+    <img
+      class="logo"
+      src="./assets/img/serichai-logo.svg"
+      title="serichai-logo"
+    />
     <li class="nav-item nav-item-home">
-      <div class="nav-item-custom fw-bold">
-        <a routerLink="/"><img src="./assets/icons/house.svg" /></a>
+      <div class="nav-item-custom d-flex align-items-center fw-bold" routerLink="/product" routerLinkActive="active-link">
+        <a><img src="./assets/icons/house.svg" /></a>
         Home
       </div>
     </li>
     <li class="nav-item">
-      <div class="nav-item-custom fw-bold">
-        <img src="./assets/icons/suitcase-lg.svg" />Product
+      <div class="nav-item-custom d-flex align-items-center fw-bold" routerLinkActive="active-link">
+        <img routerLink="/product-item" src="./assets/icons/suitcase-lg.svg" />Product
       </div>
     </li>
     <li class="nav-item">
-      <div class="nav-item-custom fw-bold">
+      <div class="nav-item-custom d-flex align-items-center fw-bold" routerLinkActive="active-link">
         <img src="./assets/icons/gear-wide.svg" />Product Item
       </div>
     </li>

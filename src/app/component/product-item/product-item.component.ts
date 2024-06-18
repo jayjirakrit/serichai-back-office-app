@@ -8,18 +8,16 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './product-item.component.html',
   styleUrl: './product-item.component.css',
 })
-export class ProductItemComponent implements OnInit, AfterViewInit {
+export class ProductItemComponent implements OnInit {
   productItem?: ProductItem;
   productId: string = '';
   itemIndex: number = 0;
+  productQuantity: number = 1;
   @ViewChild('attributeRadio')
   attributeRadio!: ElementRef;
 
   constructor(private productItemService: ProductItemService, private activeRoute: ActivatedRoute) {}
   
-  ngAfterViewInit(): void {
-    this.attributeRadio.nativeElement.click();
-  }
 
   ngOnInit(): void {
     const id = this.activeRoute.snapshot.paramMap.get('id');
@@ -29,6 +27,10 @@ export class ProductItemComponent implements OnInit, AfterViewInit {
 
   selectAttribute(event: any){
     this.itemIndex = event.target.value;
+  }
+
+  exportCsvFile(){
+    console.log('Download File !!')
   }
 
 }

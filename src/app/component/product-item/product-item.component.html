@@ -1,8 +1,10 @@
 <div class="product-item">
   <div class="product-detail">
-    <div class="product-detail-text">Product Detail</div>
+    <div class="product-detail-header d-flex align-items-center">
+      <div class="product-detail-text">Product Detail</div>
+    </div>
     <div class="product-detail-info container-fluid">
-      <div class="row">
+      <div class="row align-items-center">
         <div class="col-3 product-detail-field fw-bold">Product Code:</div>
         <div class="col-3 product-detail-value">
           {{ productItem?.productCode }}
@@ -12,7 +14,7 @@
           {{ productItem?.categoryType }}
         </div>
       </div>
-      <div class="row">
+      <div class="row align-items-center">
         <div class="col-3 product-detail-field fw-bold">Product Name:</div>
         <div class="col-3 product-detail-value">
           {{ productItem?.productName }}
@@ -20,13 +22,13 @@
         <div class="col-3 product-detail-field fw-bold">Company:</div>
         <div class="col-3 product-detail-value">{{ productItem?.company }}</div>
       </div>
-      <div class="row">
+      <div class="row align-items-center">
         <div class="col-3 product-detail-field fw-bold">Spec ID:</div>
         <div class="col-3 product-detail-value">{{ productItem?.specId }}</div>
         <div class="col-3 product-detail-field fw-bold">SKU:</div>
         <div class="col-3 product-detail-value">{{ productItem?.sku }}</div>
       </div>
-      <div class="row">
+      <div class="row align-items-center">
         <div class="col-3 product-detail-field fw-bold">Attribute:</div>
         <div class="col-3 product-detail-value">
           @for (item of productItem?.items; track item; let index = $index) {
@@ -34,24 +36,43 @@
             <input
               class="form-check-input"
               type="radio"
-              value="{{ index }}"
               name="radio{{ index }}"
               id="radio{{ index }}"
+              [value]="index"
               [(ngModel)]="itemIndex"
               #attributeRadio
             />
-            <label class="form-check-label" for="radio{{ index }}"
+            <label class="form-check-label attribute-btn" for="radio{{ index }}"
               >{{ item.attribute }}
             </label>
           </div>
           }
         </div>
       </div>
+      <div class="row align-items-center">
+        <div class="col-3 product-detail-field fw-bold">Quantity:</div>
+        <div class="col-3">
+          <input
+            type="text"
+            class="form-control border border-2"
+            name="product-quantity"
+            id="product-quantity"
+            placeholder="Enter Total"
+            [(ngModel)]="productQuantity"
+          />
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="item-detail">
-    <div class="item-detail-text">Item Details</div>
+    <div class="item-detail-header d-flex align-items-center">
+      <div class="me-auto item-detail-text">Item Details</div>
+      <button class="btn btn-dark fw-semi-bold" (click)="exportCsvFile()">
+        Export
+        <img class="export-img" src="./assets/icons/download-white.svg" />
+      </button>
+    </div>
     <!-- <div class="table-responsive"> -->
     <table class="item-detail-table table table-hover">
       <thead>
@@ -90,7 +111,7 @@
             {{ rawMaterial.size }}
           </td>
           <td class="align-middle">
-            {{ rawMaterial.total + " " + rawMaterial.unit }}
+            {{ rawMaterial.total * productQuantity + " " + rawMaterial.unit }}
           </td>
           <!-- <td class="align-middle">{{ "" }}</td> -->
         </tr>

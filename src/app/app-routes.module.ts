@@ -5,9 +5,21 @@ import { ProductComponent } from './component/product/product.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const appRoutes: Routes = [
-  { path: 'product', component: ProductComponent },
-  { path: 'product-item', component: ProductItemComponent },
-  { path: 'product-item/:id', component: ProductItemComponent },
+  {
+    path: 'product',
+    component: ProductComponent,
+    data: { title: 'All Search' },
+  },
+  {
+    path: 'product-item',
+    component: ProductItemComponent,
+    data: { title: 'View Product Item' },
+  },
+  {
+    path: 'product-item/:id',
+    component: ProductItemComponent,
+    data: { title: 'View Product Item' },
+  },
   { path: '', redirectTo: '/product', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
