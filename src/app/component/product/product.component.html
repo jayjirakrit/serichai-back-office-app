@@ -61,7 +61,7 @@
   <div class="search-result">
     <!-- Serach Result Section -->
     <div class="search-result-text fw-bold">Search Result</div>
-    <div class="search-result-table" *ngIf="products !== undefined">
+    <div class="search-result-table" *ngIf="displayProducts !== undefined">
       <table class="table table-hover">
         <thead>
           <tr>
@@ -74,13 +74,13 @@
           </tr>
         </thead>
         <tbody>
-          <ng-template [ngIf]="products.length > 0">
-            <ng-container *ngFor="let product of products; let i = index">
+          <ng-template [ngIf]="displayProducts.length > 0">
+            <ng-container *ngFor="let product of displayProducts; let i = index">
               <tr>
-                <td class="align-middle">{{ product.productCode }}</td>
-                <td class="align-middle">{{ product.productName }}</td>
-                <td class="align-middle">{{ product.categoryType }}</td>
-                <td class="align-middle">{{ product.governmentName }}</td>
+                <td class="align-middle">{{ product.subCode }}</td>
+                <td class="align-middle">{{ product.name }}</td>
+                <td class="align-middle">{{ product.subCategory }}</td>
+                <td class="align-middle">{{ product.name }}</td>
                 <td class="align-middle">
                   View<a routerLink="/product-item/{{ product.productId }}"
                     ><img class="view-icon" src="./assets/icons/eye-fill.svg"
@@ -111,7 +111,7 @@
           </ng-template>
         </tbody>
       </table>
-      <ng-template [ngIf]="products.length == 0">
+      <ng-template [ngIf]="displayProducts.length == 0">
         <p class="no-result-text">No Result Found</p>
       </ng-template>
       <div class="app-pagination">

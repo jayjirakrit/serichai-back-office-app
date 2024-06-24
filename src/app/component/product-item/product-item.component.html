@@ -7,17 +7,17 @@
       <div class="row align-items-center">
         <div class="col-3 product-detail-field fw-bold">Product Code:</div>
         <div class="col-3 product-detail-value">
-          {{ productItem?.productCode }}
+          {{ productItem?.subCode }}
         </div>
         <div class="col-3 product-detail-field fw-bold">Category Type:</div>
         <div class="col-3 product-detail-value">
-          {{ productItem?.categoryType }}
+          {{ productItem?.subCategory }}
         </div>
       </div>
       <div class="row align-items-center">
         <div class="col-3 product-detail-field fw-bold">Product Name:</div>
         <div class="col-3 product-detail-value">
-          {{ productItem?.productName }}
+          {{ productItem?.name }}
         </div>
         <div class="col-3 product-detail-field fw-bold">Company:</div>
         <div class="col-3 product-detail-value">{{ productItem?.company }}</div>
@@ -40,7 +40,6 @@
               id="radio{{ index }}"
               [value]="index"
               [(ngModel)]="itemIndex"
-              #attributeRadio
             />
             <label class="form-check-label attribute-btn" for="radio{{ index }}"
               >{{ item.attribute }}

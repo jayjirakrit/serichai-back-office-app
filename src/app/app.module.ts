@@ -14,6 +14,7 @@ import { ProductService } from './shared/service/product.service';
 import { ProductItemService } from './shared/service/product-item.service';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { FooterComponent } from './core/footer/footer.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,15 +25,10 @@ import { FooterComponent } from './core/footer/footer.component';
     HeaderComponent,
     PaginationComponent,
     NotFoundComponent,
-    FooterComponent
+    FooterComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutesModule,
-    NgbModule,
-    FormsModule
-  ],
-  providers: [ProductService, ProductItemService],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutesModule, NgbModule, FormsModule],
+  providers: [ProductService, ProductItemService, provideHttpClient()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductRequest } from '../../shared/model/client/product-request';
-import { ProductResponse } from '../../shared/model/client/product-response';
-import { Product } from '../../shared/model/product';
+import { Product, Products } from '../../shared/model/products';
 import { ProductService } from '../../shared/service/product.service';
 
 @Component({
@@ -10,7 +9,8 @@ import { ProductService } from '../../shared/service/product.service';
   styleUrl: './product.component.css',
 })
 export class ProductComponent implements OnInit {
-  products?: Product[];
+  products: Product[] = [];
+  displayProducts: Product[];
   productName: string = '';
   productCode: string = '';
   categoryType: string = '';
@@ -18,16 +18,39 @@ export class ProductComponent implements OnInit {
 
   constructor(private productService: ProductService) {}
 
-  ngOnInit(): void {}
-
-  searchProduct() {
+  ngOnInit(): void {
     const productSearchCriteria: ProductRequest = {
       productName: this.productName,
       productCode: this.productCode,
       categoryType: this.categoryType,
     };
-    this.products = this.productService.getProducts(productSearchCriteria);
-    console.log(this.products);
+    this.productService.getProducts(productSearchCriteria).subscribe({
+      next: (data) => {
+        this.products = data.items;
+      },
+      error: (error) => {
+        console.error('Error fetching JSON data:', error);
+      },
+    });
+  }
+
+  searchProduct() {
+    this.displayProducts = this.products;
+    if (this.productName != '') {
+      this.displayProducts = this.displayProducts.filter((product) =>
+        product.name.includes(this.productName)
+      );
+    }
+    if (this.productCode != '') {
+      this.displayProducts = this.displayProducts.filter((product) =>
+        product.subCode.includes(this.productCode)
+      );
+    }
+    if (this.categoryType != '') {
+      this.displayProducts = this.displayProducts.filter((product) =>
+        product.subCategory.includes(this.categoryType)
+      );
+    }
     this.clearSearch();
   }
 
@@ -35,21 +58,10 @@ export class ProductComponent implements OnInit {
     this.productName = '';
     this.productCode = '';
     this.categoryType = '';
-
   }
 
   clearResult() {
     this.clearSearch();
-    this.products = undefined;
-  }
-
-  expandProduct(product: Product): void {
-    if (this.selectedProduct === undefined) {
-      this.selectedProduct = product;
-    } else if (this.selectedProduct != product) {
-      this.selectedProduct = product;
-    } else {
-      this.selectedProduct = undefined;
-    }
+    this.displayProducts = undefined;
   }
 }
