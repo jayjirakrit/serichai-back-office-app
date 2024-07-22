@@ -82,6 +82,7 @@
           <th class="align-middle fw-bold" scope="col">Name</th>
           <th class="align-middle fw-bold" scope="col">Color</th>
           <th class="align-middle fw-bold" scope="col">Size</th>
+          <th class="align-middle fw-bold" scope="col">Length</th>
           <th class="align-middle fw-bold" scope="col">Total</th>
           <!-- <th class="align-middle fw-bold" scope="col">Action</th> -->
         </tr>
@@ -108,6 +109,9 @@
           </td>
           <td class="align-middle">
             {{ rawMaterial.size }}
+          </td>
+          <td class="align-middle">
+            {{ rawMaterial.length }}
           </td>
           <td class="align-middle">
             {{ rawMaterial.total * productQuantity + " " + rawMaterial.unit }}

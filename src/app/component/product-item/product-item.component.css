@@ -34,10 +34,6 @@
   color: hsla(0, 0%, 0%, 66%);
 }
 
-.attribute-btn {
-
-}
-
 #product-quantity {
   margin-top: 15px;
   width: 150px;
@@ -77,7 +73,9 @@ td {
 }
 
 .first-col {
-  padding-left: 50px;
+  padding-left: 35px;
+  width: 90px;
+  /* padding-left: 50px; */
 }
 
 tr {
